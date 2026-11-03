@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R9EW10BJGW"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-R9EW10BJGW');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unit Converter — Length, Weight, Temperature & More | Free Online</title>
+<meta name="description" content="Free unit converter online. Convert length, weight, temperature, area, volume, speed, data storage and time units instantly. No signup, works offline.">
+<link rel="canonical" href="https://nxtcraft.github.io/unitconv/">
+<meta property="og:title" content="Unit Converter — Free Online">
+<meta property="og:description" content="Convert any unit instantly — length, weight, temperature, area, volume, speed, data, time.">
+<meta property="og:url" content="https://nxtcraft.github.io/unitconv/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="robots" content="index, follow">
+<link rel="manifest" href="/unitconv/manifest.json">
+<meta name="theme-color" content="#0284c7">
+<meta name="mobile-web-app-capable" content="yes">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Unit Converter","url":"https://nxtcraft.github.io/unitconv/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"description":"Free online unit converter — length, weight, temperature, area, volume, speed, data storage, time."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many cm in an inch?","acceptedAnswer":{"@type":"Answer","text":"1 inch = 2.54 centimetres. So 12 inches (1 foot) = 30.48 cm."}},{"@type":"Question","name":"How to convert Celsius to Fahrenheit?","acceptedAnswer":{"@type":"Answer","text":"Multiply the Celsius value by 9/5 then add 32. Formula: °F = (°C × 9/5) + 32. Example: 37°C = 98.6°F."}},{"@type":"Question","name":"How many kg in a pound?","acceptedAnswer":{"@type":"Answer","text":"1 pound (lb) = 0.453592 kg. So 1 kg = approximately 2.205 pounds."}},{"@type":"Question","name":"How many MB in a GB?","acceptedAnswer":{"@type":"Answer","text":"1 GB = 1024 MB (binary, used by operating systems) or 1000 MB (decimal, used by storage manufacturers). This converter uses the binary standard (1 GB = 1024 MB)."}}]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f0f9ff;color:#0f172a;min-height:100vh}
+:root{--accent:#0284c7;--accent-dark:#0369a1;--surface:#fff;--border:#e0f2fe;--muted:#64748b;--bg:#f0f9ff}
+nav{background:var(--accent);padding:0 20px;height:54px;display:flex;align-items:center;gap:16px}
+.nav-logo{color:#fff;font-weight:800;font-size:18px;text-decoration:none}
+.nav-logo span{background:rgba(255,255,255,.25);padding:2px 7px;border-radius:6px;margin-right:4px}
+.container{max-width:740px;margin:0 auto;padding:28px 16px 60px}
+h1{font-size:28px;font-weight:800;margin-bottom:6px}
+h1 span{color:var(--accent)}
+.sub{color:var(--muted);font-size:15px;margin-bottom:24px}
+
+/* Category tabs */
+.cats{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
+.cat-btn{padding:7px 14px;border:1.5px solid var(--border);border-radius:20px;background:var(--surface);font-size:13px;font-weight:500;cursor:pointer;color:var(--muted);transition:all .15s}
+.cat-btn:hover{border-color:var(--accent);color:var(--accent)}
+.cat-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* Converter card */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;box-shadow:0 2px 16px rgba(2,132,199,.07)}
+.converter-row{display:grid;grid-template-columns:1fr 48px 1fr;align-items:end;gap:12px}
+.field label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+.field select{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;background:var(--surface);color:#0f172a;font-weight:500;outline:none;cursor:pointer}
+.field select:focus{border-color:var(--accent)}
+.field input{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:20px;font-weight:700;background:var(--surface);color:#0f172a;outline:none;margin-top:8px}
+.field input:focus{border-color:var(--accent)}
+.field input.result{background:#f0f9ff;color:var(--accent);cursor:default}
+.swap-btn{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--border);background:var(--surface);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;margin-bottom:2px;transition:all .15s;flex-shrink:0}
+.swap-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.formula-box{margin-top:16px;padding:12px 16px;background:#f0f9ff;border-radius:10px;font-size:13px;color:var(--muted)}
+.formula-box strong{color:var(--accent)}
+
+/* Quick ref table */
+.quick-ref{margin-top:20px}
+.quick-ref h3{font-size:14px;font-weight:700;margin-bottom:10px;color:var(--muted)}
+.ref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px}
+.ref-item{padding:8px 12px;background:#f8fafc;border:1px solid var(--border);border-radius:8px;font-size:13px;cursor:pointer;transition:background .1s}
+.ref-item:hover{background:#e0f2fe}
+.ref-item span{color:var(--accent);font-weight:600}
+
+.seo{margin-top:32px;padding-top:24px;border-top:1px solid var(--border)}
+.seo h2{font-size:17px;font-weight:700;margin-bottom:10px}
+.seo p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:12px}
+footer{text-align:center;padding:20px;font-size:13px;color:var(--muted);border-top:1px solid var(--border)}
+
+@media(max-width:500px){
+  .converter-row{grid-template-columns:1fr;gap:8px}
+  .swap-btn{width:100%;border-radius:10px;height:38px}
+}
+</style>
+</head>
+<body>
+<nav><a class="nav-logo" href="/"><span>🔄</span>UnitConv</a></nav>
+
+<div class="container">
+  <h1>Unit <span>Converter</span></h1>
+  <p class="sub">Convert any unit instantly — length, weight, temperature, area, volume, speed, data, time.</p>
+
+  <div class="cats" id="cats"></div>
+
+  <div class="card">
+    <div class="converter-row">
+      <div class="field">
+        <label>From</label>
+        <select id="fromUnit" onchange="convert()"></select>
+        <input type="number" id="fromVal" value="1" oninput="convert()" placeholder="Enter value">
+      </div>
+      <button class="swap-btn" onclick="swapUnits()" title="Swap units">⇄</button>
+      <div class="field">
+        <label>To</label>
+        <select id="toUnit" onchange="convert()"></select>
+        <input type="number" id="toVal" class="result" readonly placeholder="Result">
+      </div>
+    </div>
+    <div class="formula-box" id="formulaBox"></div>
+    <div class="quick-ref">
+      <h3>Quick Reference</h3>
+      <div class="ref-grid" id="refGrid"></div>
+    </div>
+  </div>
+
+  <div class="seo" id="seoBox"></div>
+</div>
+
+<footer><p>© 2026 UnitConv — Free unit converter. Works offline.</p></footer>
+<script>if("serviceWorker"in navigator)navigator.serviceWorker.register("/unitconv/sw.js");</script>
+
+<script>
+// ─── Conversion data ────────────────────────────────────────────────────────
+// Each unit has a multiplier to convert TO base unit.
+// Temperature uses special functions (non-linear).
+const CATS = {
+  length: {
+    label: '📏 Length', base: 'm',
+    units: {
+      km:    { label:'Kilometre (km)',    m: 1000 },
+      m:     { label:'Metre (m)',         m: 1 },
+      cm:    { label:'Centimetre (cm)',   m: 0.01 },
+      mm:    { label:'Millimetre (mm)',   m: 0.001 },
+      mi:    { label:'Mile (mi)',         m: 1609.344 },
+      yd:    { label:'Yard (yd)',         m: 0.9144 },
+      ft:    { label:'Foot (ft)',         m: 0.3048 },
+      in:    { label:'Inch (in)',         m: 0.0254 },
+      nm:    { label:'Nautical Mile',     m: 1852 },
+    },
+    refs: [
+      {a:1,u:'in',b:2.54,v:'cm'},{a:1,u:'ft',b:30.48,v:'cm'},
+      {a:1,u:'mi',b:1.609,v:'km'},{a:1,u:'m',b:3.281,v:'ft'},
+      {a:100,u:'cm',b:1,v:'m'},{a:1,u:'km',b:1000,v:'m'},
+    ],
+    seo: '<h2>Length Conversion Guide</h2><p>The metric system (km, m, cm, mm) is the international standard. The imperial system (miles, yards, feet, inches) is used in the US and partially in UK. India uses metric but informally uses feet/inches for height.</p><p><strong>Key facts:</strong> 1 inch = 2.54 cm · 1 foot = 30.48 cm · 1 mile = 1.609 km · 1 metre = 3.281 feet.</p>'
+  },
+  weight: {
+    label: '⚖️ Weight', base: 'kg',
+    units: {
+      t:    { label:'Tonne (t)',          m: 1000 },
+      kg:   { label:'Kilogram (kg)',      m: 1 },
+      g:    { label:'Gram (g)',           m: 0.001 },
+      mg:   { label:'Milligram (mg)',     m: 0.000001 },
+      lb:   { label:'Pound (lb)',         m: 0.453592 },
+      oz:   { label:'Ounce (oz)',         m: 0.0283495 },
+      st:   { label:'Stone (st)',         m: 6.35029 },
+      qtl:  { label:'Quintal (qtl)',      m: 100 },
+    },
+    refs: [
+      {a:1,u:'lb',b:0.4536,v:'kg'},{a:1,u:'kg',b:2.205,v:'lb'},
+      {a:1,u:'oz',b:28.35,v:'g'},{a:1,u:'st',b:6.35,v:'kg'},
+      {a:1,u:'t',b:1000,v:'kg'},{a:1,u:'qtl',b:100,v:'kg'},
+    ],
+    seo: '<h2>Weight Conversion Guide</h2><p>India uses kg/g for everyday weight. US uses pounds/ounces. UK uses both. <strong>Key facts:</strong> 1 kg = 2.205 lb · 1 lb = 453.6 g · 1 stone = 14 lb = 6.35 kg · 1 tonne = 1000 kg.</p><p>For body weight: to convert kg to lb, multiply by 2.205. For gold/silver: 1 tola = 11.66 g (Indian traditional measure).</p>'
+  },
+  temperature: {
+    label: '🌡️ Temperature', base: 'c',
+    special: true,
+    units: {
+      c:  { label:'Celsius (°C)' },
+      f:  { label:'Fahrenheit (°F)' },
+      k:  { label:'Kelvin (K)' },
+    },
+    refs: [
+      {a:0,u:'°C',b:32,v:'°F'},{a:100,u:'°C',b:212,v:'°F'},
+      {a:37,u:'°C',b:98.6,v:'°F'},{a:-40,u:'°C',b:-40,v:'°F'},
+      {a:0,u:'°C',b:273.15,v:'K'},{a:20,u:'°C',b:293.15,v:'K'},
+    ],
+    seo: '<h2>Temperature Conversion Guide</h2><p>Celsius is used in India and most of the world. Fahrenheit is used in the US. Kelvin is used in science.</p><p><strong>Formulas:</strong> °F = (°C × 9/5) + 32 · °C = (°F − 32) × 5/9 · K = °C + 273.15</p><p><strong>Key references:</strong> 0°C = 32°F (water freezes) · 37°C = 98.6°F (body temperature) · 100°C = 212°F (water boils) · −40°C = −40°F (both scales meet).</p>'
+  },
+  area: {
+    label: '⬛ Area', base: 'm2',
+    units: {
+      km2:  { label:'Square Kilometre',   m: 1e6 },
+      m2:   { label:'Square Metre (m²)',  m: 1 },
+      cm2:  { label:'Square Centimetre',  m: 0.0001 },
+      ha:   { label:'Hectare (ha)',        m: 10000 },
+      ac:   { label:'Acre',               m: 4046.86 },
+      ft2:  { label:'Square Foot (ft²)',  m: 0.092903 },
+      in2:  { label:'Square Inch (in²)',  m: 0.00064516 },
+      yd2:  { label:'Square Yard (yd²)',  m: 0.836127 },
+      gaj:  { label:'Gaj (sq yd, India)', m: 0.836127 },
+    },
+    refs: [
+      {a:1,u:'acre',b:4047,v:'m²'},{a:1,u:'ha',b:10000,v:'m²'},
+      {a:1,u:'acre',b:0.4047,v:'ha'},{a:1,u:'km²',b:100,v:'ha'},
+      {a:100,u:'gaj',b:84,v:'m²'},{a:1,u:'acre',b:4840,v:'sq yd'},
+    ],
+    seo: '<h2>Area Conversion Guide</h2><p>India commonly uses square feet, gaj (square yard), and acres for property. 1 gaj = 1 square yard = 0.836 m².</p><p><strong>Key facts:</strong> 1 acre = 4047 m² = 43,560 ft² · 1 hectare = 10,000 m² = 2.47 acres · 1 bigha varies by state (roughly 1,000–3,000 m²).</p>'
+  },
+  volume: {
+    label: '🪣 Volume', base: 'l',
+    units: {
+      m3:   { label:'Cubic Metre (m³)',    m: 1000 },
+      l:    { label:'Litre (L)',            m: 1 },
+      ml:   { label:'Millilitre (mL)',      m: 0.001 },
+      cm3:  { label:'Cubic Centimetre (cc)',m: 0.001 },
+      gal:  { label:'US Gallon',            m: 3.78541 },
+      qt:   { label:'US Quart',             m: 0.946353 },
+      pt:   { label:'US Pint',              m: 0.473176 },
+      cup:  { label:'US Cup',               m: 0.236588 },
+      floz: { label:'Fluid Ounce (fl oz)',  m: 0.0295735 },
+      tsp:  { label:'Teaspoon (tsp)',       m: 0.00492892 },
+      tbsp: { label:'Tablespoon (tbsp)',    m: 0.0147868 },
+    },
+    refs: [
+      {a:1,u:'L',b:1000,v:'mL'},{a:1,u:'gal',b:3.785,v:'L'},
+      {a:1,u:'cup',b:236.6,v:'mL'},{a:1,u:'tbsp',b:15,v:'mL'},
+      {a:1,u:'tsp',b:5,v:'mL'},{a:1,u:'m³',b:1000,v:'L'},
+    ],
+    seo: '<h2>Volume Conversion Guide</h2><p><strong>Key facts:</strong> 1 litre = 1000 mL = 1000 cm³ · 1 US gallon = 3.785 L · 1 cup = 236.6 mL · 1 tablespoon = 15 mL · 1 teaspoon = 5 mL.</p><p>Note: UK gallon (imperial) = 4.546 L, which is larger than US gallon (3.785 L). This converter uses the US system.</p>'
+  },
+  speed: {
+    label: '🚀 Speed', base: 'kmh',
+    units: {
+      kmh:  { label:'Kilometre/hour (km/h)',  m: 1 },
+      ms:   { label:'Metre/second (m/s)',      m: 3.6 },
+      mph:  { label:'Mile/hour (mph)',          m: 1.60934 },
+      knot: { label:'Knot (nautical)',          m: 1.852 },
+      mach: { label:'Mach (speed of sound)',    m: 1234.8 },
+      fps:  { label:'Foot/second (fps)',        m: 1.09728 },
+    },
+    refs: [
+      {a:100,u:'km/h',b:62.1,v:'mph'},{a:1,u:'m/s',b:3.6,v:'km/h'},
+      {a:1,u:'mach',b:1235,v:'km/h'},{a:1,u:'knot',b:1.852,v:'km/h'},
+      {a:60,u:'km/h',b:16.7,v:'m/s'},{a:100,u:'mph',b:161,v:'km/h'},
+    ],
+    seo: '<h2>Speed Conversion Guide</h2><p>India uses km/h for road speeds. International aviation uses knots. Science uses m/s.</p><p><strong>Key facts:</strong> 1 m/s = 3.6 km/h · Speed of sound at sea level ≈ 340 m/s = 1235 km/h (Mach 1) · Speed of light ≈ 299,792 km/s.</p>'
+  },
+  data: {
+    label: '💾 Data', base: 'b',
+    units: {
+      tb:   { label:'Terabyte (TB)',    m: 1099511627776 },
+      gb:   { label:'Gigabyte (GB)',    m: 1073741824 },
+      mb:   { label:'Megabyte (MB)',    m: 1048576 },
+      kb:   { label:'Kilobyte (KB)',    m: 1024 },
+      b:    { label:'Byte (B)',         m: 1 },
+      bit:  { label:'Bit',             m: 0.125 },
+      mbps: { label:'Megabit (Mbit)',  m: 131072 },
+      gbps: { label:'Gigabit (Gbit)',  m: 134217728 },
+    },
+    refs: [
+      {a:1,u:'KB',b:1024,v:'B'},{a:1,u:'MB',b:1024,v:'KB'},
+      {a:1,u:'GB',b:1024,v:'MB'},{a:1,u:'TB',b:1024,v:'GB'},
+      {a:1,u:'B',b:8,v:'bits'},{a:100,u:'Mbps',b:12.5,v:'MB/s'},
+    ],
+    seo: '<h2>Data Storage Conversion Guide</h2><p>This converter uses binary (IEC) standard: 1 KB = 1024 bytes, 1 MB = 1024 KB. Storage manufacturers often use decimal (1 KB = 1000 B), which is why a "500 GB" drive shows ~465 GB in Windows.</p><p><strong>Key facts:</strong> 1 byte = 8 bits · 1 KB = 1024 B · 1 MB = 1,048,576 B · 1 GB = 1,073,741,824 B.</p>'
+  },
+  time: {
+    label: '⏱ Time', base: 's',
+    units: {
+      yr:   { label:'Year (365 days)',    m: 31536000 },
+      mo:   { label:'Month (30 days)',    m: 2592000 },
+      wk:   { label:'Week',               m: 604800 },
+      d:    { label:'Day',                m: 86400 },
+      hr:   { label:'Hour (hr)',           m: 3600 },
+      min:  { label:'Minute (min)',        m: 60 },
+      s:    { label:'Second (s)',          m: 1 },
+      ms:   { label:'Millisecond (ms)',    m: 0.001 },
+      us:   { label:'Microsecond (μs)',    m: 0.000001 },
+    },
+    refs: [
+      {a:1,u:'min',b:60,v:'s'},{a:1,u:'hr',b:60,v:'min'},
+      {a:1,u:'day',b:24,v:'hr'},{a:1,u:'wk',b:7,v:'days'},
+      {a:1,u:'yr',b:365,v:'days'},{a:1,u:'yr',b:8760,v:'hr'},
+    ],
+    seo: '<h2>Time Conversion Guide</h2><p><strong>Key facts:</strong> 1 minute = 60 seconds · 1 hour = 3600 seconds · 1 day = 86,400 seconds · 1 week = 168 hours · 1 year = 365 days = 8,760 hours = 525,600 minutes.</p>'
+  },
+};
+
+// ─── Temperature conversion ─────────────────────────────────────────────────
+function tempToC(val, from) {
+  if (from === 'c') return val;
+  if (from === 'f') return (val - 32) * 5 / 9;
+  if (from === 'k') return val - 273.15;
+}
+function cToTemp(c, to) {
+  if (to === 'c') return c;
+  if (to === 'f') return c * 9 / 5 + 32;
+  if (to === 'k') return c + 273.15;
+}
+
+// ─── State ───────────────────────────────────────────────────────────────────
+let activeCat = 'length';
+
+// ─── Init ────────────────────────────────────────────────────────────────────
+function init() {
+  const catsEl = document.getElementById('cats');
+  Object.keys(CATS).forEach(key => {
+    const btn = document.createElement('button');
+    btn.className = 'cat-btn' + (key === activeCat ? ' active' : '');
+    btn.textContent = CATS[key].label;
+    btn.onclick = () => selectCat(key);
+    catsEl.appendChild(btn);
+  });
+  selectCat(activeCat);
+}
+
+function selectCat(cat) {
+  activeCat = cat;
+  document.querySelectorAll('.cat-btn').forEach((b, i) => {
+    b.classList.toggle('active', Object.keys(CATS)[i] === cat);
+  });
+  const data = CATS[cat];
+  const fromSel = document.getElementById('fromUnit');
+  const toSel = document.getElementById('toUnit');
+  fromSel.innerHTML = Object.keys(data.units).map(k =>
+    `<option value="${k}">${data.units[k].label}</option>`).join('');
+  toSel.innerHTML = Object.keys(data.units).map(k =>
+    `<option value="${k}">${data.units[k].label}</option>`).join('');
+
+  // sensible defaults per category
+  const defaults = {
+    length:['cm','in'], weight:['kg','lb'], temperature:['c','f'],
+    area:['m2','ft2'], volume:['l','gal'], speed:['kmh','mph'],
+    data:['gb','mb'], time:['hr','min']
+  };
+  if (defaults[cat]) {
+    fromSel.value = defaults[cat][0];
+    toSel.value   = defaults[cat][1];
+  }
+
+  document.getElementById('fromVal').value = '1';
+  renderRefs(cat);
+  renderSeo(cat);
+  convert();
+}
+
+function convert() {
+  const cat  = activeCat;
+  const from = document.getElementById('fromUnit').value;
+  const to   = document.getElementById('toUnit').value;
+  const raw  = document.getElementById('fromVal').value;
+  const val  = parseFloat(raw);
+
+  if (raw === '' || isNaN(val)) {
+    document.getElementById('toVal').value = '';
+    document.getElementById('formulaBox').innerHTML = '';
+    return;
+  }
+
+  let result;
+  if (CATS[cat].special) {
+    // Temperature: non-linear, use formula functions
+    const celsius = tempToC(val, from);
+    result = cToTemp(celsius, to);
+  } else {
+    const baseVal = val * CATS[cat].units[from].m;
+    result = baseVal / CATS[cat].units[to].m;
+  }
+
+  // Format: avoid scientific notation for reasonable numbers
+  const fmt = n => {
+    if (n === 0) return '0';
+    const abs = Math.abs(n);
+    if (abs >= 1e12 || (abs < 1e-6 && abs > 0)) return n.toExponential(4);
+    if (abs >= 1000) return parseFloat(n.toPrecision(7)).toLocaleString('en-IN');
+    return parseFloat(n.toPrecision(7)).toString();
+  };
+
+  document.getElementById('toVal').value = fmt(result);
+
+  // Formula display
+  const fromLabel = CATS[cat].units[from].label;
+  const toLabel   = CATS[cat].units[to].label;
+  let formula = '';
+  if (CATS[cat].special) {
+    const fmap = { c:'°C', f:'°F', k:'K' };
+    if (from === 'c' && to === 'f') formula = `°F = (°C × 9/5) + 32`;
+    else if (from === 'f' && to === 'c') formula = `°C = (°F − 32) × 5/9`;
+    else if (from === 'c' && to === 'k') formula = `K = °C + 273.15`;
+    else if (from === 'k' && to === 'c') formula = `°C = K − 273.15`;
+    else if (from === 'f' && to === 'k') formula = `K = (°F − 32) × 5/9 + 273.15`;
+    else if (from === 'k' && to === 'f') formula = `°F = (K − 273.15) × 9/5 + 32`;
+    else formula = `${fmap[from]} → ${fmap[to]}`;
+  } else {
+    const ratio = CATS[cat].units[from].m / CATS[cat].units[to].m;
+    const rFmt = parseFloat(ratio.toPrecision(6));
+    formula = `1 ${fromLabel.split(' ')[0]} = ${rFmt} ${toLabel.split(' ')[0]}`;
+  }
+  document.getElementById('formulaBox').innerHTML = `<strong>Formula:</strong> ${formula}`;
+}
+
+function swapUnits() {
+  const fromSel = document.getElementById('fromUnit');
+  const toSel   = document.getElementById('toUnit');
+  const fromVal = document.getElementById('fromVal');
+  const toVal   = document.getElementById('toVal');
+  const tmpUnit = fromSel.value;
+  fromSel.value = toSel.value;
+  toSel.value   = tmpUnit;
+  fromVal.value = toVal.value || fromVal.value;
+  convert();
+}
+
+function renderRefs(cat) {
+  const refs = CATS[cat].refs;
+  const grid = document.getElementById('refGrid');
+  grid.innerHTML = refs.map(r =>
+    `<div class="ref-item" onclick="setFromRef(${JSON.stringify(r)})">
+      <span>${r.a} ${r.u}</span> = ${r.b} ${r.v}
+    </div>`
+  ).join('');
+}
+
+function setFromRef(r) {
+  // find the unit key matching the 'from' label fragment
+  document.getElementById('fromVal').value = r.a;
+  convert();
+}
+
+function renderSeo(cat) {
+  document.getElementById('seoBox').innerHTML = CATS[cat].seo || '';
+}
+
+init();
+</script>
+</body>
+</html>
